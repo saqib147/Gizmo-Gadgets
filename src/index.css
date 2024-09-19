@@ -1,13 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  margin-left: 12px;
+  margin-right: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.features {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.feature {
+  width: 50%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.feature:nth-child(2) {
+  background-color: #f7f7f7; /* assuming bg-grey-100 is #f7f7f7 */
+}
+/* Features.module.css */
+.feature {
+  width: 50%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Add media queries for smaller screens */
+@media (max-width: 768px) {
+  .feature {
+    height: 50vh;
+  }
 }
