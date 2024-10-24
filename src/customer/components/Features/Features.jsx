@@ -5,7 +5,7 @@ import Right from "./Assets/Right.png";
 const Features = () => {
   return (
     <>
-      <div className="flex mt-8 gap-8">
+      <div className="flex mt-8 margin-x gap-8">
         <div
           className=" w-1/2 bg-cover bg-gray-100 rounded-3xl p-8 h-[400px] flex flex-row items-center"
           style={{ backgroundImage: `url(${Left})` }}

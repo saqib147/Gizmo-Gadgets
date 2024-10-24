@@ -33,7 +33,7 @@ const FeaturesCards = () => {
   ];
 
   return (
-    <div className="flex justify-between space-x-4 mt-8">
+    <div className="flex justify-between margin-x space-x-4 mt-8">
       {features.map((feature, index) => (
         <div
           key={index}

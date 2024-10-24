@@ -5,7 +5,7 @@ import video from "../HeroSection/assets/HeroVideo.mp4";
 export const Hero = () => {
   return (
     <>
-      <div className="rounded-lg ">
+      <div className="rounded-lg margin-x ">
         <video
           src={video}
           loop

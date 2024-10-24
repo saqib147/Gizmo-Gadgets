@@ -13,7 +13,7 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState("Home"); // For active state
 
   return (
-    <nav className="flex items-center justify-between px-6 py-3 bg-[#1D1D1D] rounded-2xl my-3">
+    <nav className="flex items-center margin-x justify-between px-6 py-3 bg-[#1D1D1D] rounded-2xl my-3">
       {/* Logo */}
       <div className="text-white font-bold text-lg w-[20%]">Gadget Gizmo</div>
 

@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 body {
-  margin-left: 12px;
-  margin-right: 12px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -44,4 +42,12 @@ code {
   .feature {
     height: 50vh;
   }
+}
+.margin-x {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.padding-x {
+  padding-left: 50px;
+  padding-right: 50px;
 }
