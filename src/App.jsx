@@ -19,10 +19,13 @@ function App() {
       <Navbar />
       <Hero />
       <Features />
-      <FeaturesCards />
+      
       <HotProducts />
       <ProductCarousals />
+      <ProductCarousals />
+      
       <InfiniteScroll />
+      <FeaturesCards />
       <Deal />
       <TestimonialSlider />
       <TestimonialSlider1 />

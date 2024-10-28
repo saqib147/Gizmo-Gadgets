@@ -8,7 +8,7 @@ import HotProduct5 from "./Assets/HotProduct5.png";
 export default function HotProducts() {
   return (
     <>
-      <div className="my-8 margin-x">
+      <div className="my-8 margin-x hidden md:block">
         <div className="grid grid-cols-4 grid-rows-2 gap-6">
           <div className="col-span-2 row-span-2 ">
             <img src={HotProduct1} alt="product1" className="rounded-3xl" />
