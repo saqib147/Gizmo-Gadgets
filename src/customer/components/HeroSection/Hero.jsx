@@ -3,7 +3,7 @@ import video from "../HeroSection/assets/HeroVideo.mp4";
 
 export const Hero = () => {
   return (
-    <div className="mx-4 hidden md:mx-6 lg:mx-8 my-4">
+    <div className="mx-4 md:mx-6 lg:mx-8 my-4">
       <div className="relative rounded-2xl overflow-hidden bg-gray-900">
         {/* Video Container */}
         <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[60vh]">
