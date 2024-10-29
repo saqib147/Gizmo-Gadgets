@@ -42,11 +42,12 @@ export default function InfiniteScroll() {
   return (
     <>
       <div className="overflow-hidden bg-black flex">
-        <ul className="flex gap-10  text-white text-2xl font-semibold py-4 animate-infinite-scroll">
+        <ul className="flex gap-10  text-white text-lg md:text-2xl  font-semibold py-4 md:py-2 animate-infinite-scroll">
           {[...Items, ...Items].map((item) => (
             <li className="flex gap-10">
               <p>{item.Name}</p>
-              <img className="mr-5" src={item.Star} alt="star" />
+              <img className="mr-5 md:mr-2 w-6 md:w-8 h-6 md:h-8" src={item.Star} alt="star" />
+
             </li>
           ))}
         </ul>

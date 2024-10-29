@@ -21,8 +21,8 @@ function App() {
       <Features />
       
       <HotProducts />
-      <ProductCarousals />
-      <ProductCarousals />
+      <ProductCarousals heading="Featured Mobile Phones"/>
+      <ProductCarousals heading="Top Sellers"/>
       
       <InfiniteScroll />
       <FeaturesCards />
