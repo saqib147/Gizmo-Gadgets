@@ -399,10 +399,14 @@ const ProductCarousel = ({ heading }) => {
   
 
   const products = [
+
     { id: 1, name: "Samsung Galaxy Z Flip 5", price: "799$", img: pimg1 },
     { id: 2, name: "Apple iPhone 15 Pro", price: "999$", img: pimg2 },
     { id: 3, name: "Google Pixel 8Pro", price: "899$", img: pimg3 },
     { id: 4, name: "Samsung S23 Ultra", price: "999$", img: pimg4 },
+    { id: 5, name: "Google Pixel 9 Pro", price: "999$", img: pimg3 },
+    { id: 6, name: "Samsung S24 Ultra", price: "1099$", img: pimg4 },
+ 
   ];
 
   return (
