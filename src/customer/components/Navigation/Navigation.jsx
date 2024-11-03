@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div className="relative margin-x">
-      <nav className="flex items-center justify-between px-4 md:px-6 py-3 bg-gray-900 rounded-xl my-3">
+      <nav className="flex items-center justify-between px-4 md:px-6 py-3 bg-[#1E1E1E] rounded-3xl my-3">
         {/* Logo */}
         <div className="text-white font-bold text-lg w-1/4">Gadget Gizmo</div>
 
@@ -42,7 +42,10 @@ const Navbar = () => {
               placeholder="Search Products..."
               className="w-full p-2 rounded-full outline-none bg-white text-black placeholder-gray-500 pl-10"
             />
-            <Search className="absolute left-3 top-2.5 text-gray-400" size={20} />
+            <Search
+              className="absolute left-3 top-2.5 text-gray-400"
+              size={20}
+            />
           </div>
         </div>
 
@@ -93,7 +96,10 @@ const Navbar = () => {
               placeholder="Search Products..."
               className="w-full p-2 rounded-full outline-none bg-white text-black placeholder-gray-500 pl-10"
             />
-            <Search className="absolute left-3 top-2.5 text-gray-400" size={20} />
+            <Search
+              className="absolute left-3 top-2.5 text-gray-400"
+              size={20}
+            />
           </div>
         </div>
 
