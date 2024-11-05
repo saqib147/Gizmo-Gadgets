@@ -137,20 +137,22 @@ export default function Deal() {
         </div>
       </div>
 
-      <div className="flex gap-7 py-5 px-10">
+      <div className="flex flex-col md:flex-row gap-7 py-5 px-10">
         <div>
           <div>
             <img src={Deal2bg} alt="deal2" />
           </div>
         </div>
         <div
-          className="w-[45%] text-white bg-cover bg-[#8863BB] bg-right flex items-center rounded-2xl py-2 pr-10 pl-3"
+          className="w-full md:w-[45%] text-white bg-cover bg-[#8863BB] bg-right flex items-center rounded-2xl py-2 pr-10 pl-3"
           style={{ backgroundImage: `url(${Deal3bg})` }}
         >
           <div>
             <p className="text-sm">Learn about us</p>
-            <h2 className="text-4xl font-semibold">About our Store</h2>
-            <p className="w-3/4 text-sm">
+            <h2 className="text-xl ms:text-3xl font-semibold">
+              About our Store
+            </h2>
+            <p className="md:w-3/4 text-sm">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
               nisi tempora fugiat exercitationem porro, labore quam? Lorem ipsum
               dolor sit amet.

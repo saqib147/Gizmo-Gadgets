@@ -1,8 +1,11 @@
 import "./App.css";
-// import HomePage from "./customer/Pages/HomePage/HomePage.jsx";
+import CartPage from "./customer/Pages/CartPage/CartPage.jsx";
+import CheckoutPage from "./customer/Pages/CheckoutPage/CheckoutPage.jsx";
+import HomePage from "./customer/Pages/HomePage/HomePage.jsx";
+import ProductsPage from "./customer/Pages/ProductsPage/ProductsPage.jsx";
+import SingleProductPage from "./customer/Pages/SingleProduct/SingleProductPage.jsx";
 import Footer from "./customer/components/Footer/Footer.jsx";
 import Navbar from "./customer/components/Navigation/Navigation.jsx";
-import Product from "./customer/components/Product/Product.jsx";
 
 function App() {
   return (
@@ -10,7 +13,10 @@ function App() {
       <Navbar />
       <div>
         {/* <HomePage /> */}
-        <Product />
+        {/* <SingleProductPage /> */}
+        {/* <CartPage /> */}
+        {/* <ProductsPage /> */}
+        <CheckoutPage />
       </div>
       <Footer />
     </>

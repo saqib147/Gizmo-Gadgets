@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import {
   Mobiles,
@@ -33,13 +34,7 @@ const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
 ];
-const subCategories = [
-  { name: "Headphones", href: "#" },
-  { name: "Mobile Phones", href: "#" },
-  { name: "Keyboards", href: "#" },
-  { name: "Airpods", href: "#" },
-  { name: "Gamming Consoles", href: "#" },
-];
+
 const filters = [
   {
     id: "brands",
@@ -52,6 +47,17 @@ const filters = [
       { value: "Beats", label: "Beats", checked: false },
     ],
   },
+  {
+    id: "subcategories",
+    name: "Subcategories",
+    options: [
+      { value: "Smartphones", label: "Smartphones", checked: false },
+      { value: "Tablets", label: "Tablets", checked: false },
+      { value: "Laptops", label: "Laptops", checked: false },
+      { value: "Wearables", label: "Wearables", checked: false },
+      { value: "Accessories", label: "Accessories", checked: false },
+    ],
+  },
 ];
 
 function classNames(...classes) {
@@ -60,6 +66,41 @@ function classNames(...classes) {
 
 export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleFilter = (value, sectionId) => {
+    const searchParams = new URLSearchParams(location.search);
+    let filterValue = searchParams.getAll(sectionId);
+
+    // Check if the filterValue array exists and contains the value
+    if (filterValue.length > 0) {
+      // Split the first value by comma to get individual selected values
+      let currentValues = filterValue[0].split(",");
+
+      // If the value is already present, remove it
+      if (currentValues.includes(value)) {
+        currentValues = currentValues.filter((item) => item !== value);
+      } else {
+        // If the value is not present, add it
+        currentValues.push(value);
+      }
+
+      // Update the search parameters
+      if (currentValues.length > 0) {
+        searchParams.set(sectionId, currentValues.join(","));
+      } else {
+        searchParams.delete(sectionId);
+      }
+    } else {
+      // If no filters exist, add the new value
+      searchParams.set(sectionId, value);
+    }
+
+    // Update the URL with the new search parameters
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
+  };
 
   const allProducts = [
     ...(Airpods || []),
@@ -101,22 +142,14 @@ export default function Product() {
 
               {/* Filters */}
               <form className="mt-4 border-t border-gray-200">
-                <h3 className="">Categories</h3>
-                <ul role="list" className="px-2 py-3 font-medium text-gray-900">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href} className="block px-2 py-3">
-                        {category.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                {/* <h3 className="">Filters</h3> */}
 
                 {filters.map((section) => (
                   <Disclosure
                     key={section.id}
                     as="div"
                     className="border-t border-gray-200 px-4 py-6"
+                    defaultOpen
                   >
                     <h3 className="-mx-2 -my-3 flow-root">
                       <DisclosureButton className="group flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
@@ -140,6 +173,9 @@ export default function Product() {
                         {section.options.map((option, optionIdx) => (
                           <div key={option.value} className="flex items-center">
                             <input
+                              onChange={() =>
+                                handleFilter(option.value, section.id)
+                              }
                               defaultValue={option.value}
                               defaultChecked={option.checked}
                               id={`filter-mobile-${section.id}-${optionIdx}`}
@@ -232,23 +268,14 @@ export default function Product() {
             <div className="grid grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-5">
               {/* Filters */}
               <form className="hidden h-screen p-4 bg-[#1E1E1E] text-white rounded-2xl lg:block">
-                <h3 className="pb-4 text-2xl font-bold">Categories</h3>
-                <ul
-                  role="list"
-                  className="space-y-4 ml-5 border-b border-gray-200 pb-6 text-md  text-white"
-                >
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="pb-4 text-2xl font-bold">Filters</h3>
 
                 {filters.map((section) => (
                   <Disclosure
                     key={section.id}
                     as="div"
                     className="border-b border-gray-200 py-6"
+                    defaultOpen
                   >
                     <h3 className="-my-3 flow-root">
                       <DisclosureButton className="group flex w-full items-center justify-between bg-[#1E1E1E] py-3 text-sm text-white hover:text-gray-200">
@@ -272,6 +299,9 @@ export default function Product() {
                         {section.options.map((option, optionIdx) => (
                           <div key={option.value} className="flex items-center">
                             <input
+                              onChange={() =>
+                                handleFilter(option.value, section.id)
+                              }
                               defaultValue={option.value}
                               defaultChecked={option.checked}
                               id={`filter-${section.id}-${optionIdx}`}
