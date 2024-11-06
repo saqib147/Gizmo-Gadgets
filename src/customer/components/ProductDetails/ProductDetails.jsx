@@ -27,6 +27,7 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { Rating } from "@mui/material";
 import ProductReviewCard from "./ProductReviewCard";
+import { useNavigate } from "react-router-dom";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -88,7 +89,11 @@ function classNames(...classes) {
 export default function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const navigate = useNavigate();
 
+  const handleAddtoCart = () => {
+    navigate("/cart");
+  };
   return (
     <div className="bg-white">
       <div className="pt-6">
@@ -220,7 +225,7 @@ export default function ProductDetails() {
                   </fieldset>
                 </div>
 
-                <div className="mt-6">
+                <div className="mt-6" onClick={handleAddtoCart}>
                   <a
                     href="#_"
                     class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-blue-500 rounded-full shadow-md group"
