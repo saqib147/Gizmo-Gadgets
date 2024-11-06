@@ -17,7 +17,7 @@ const OrderDetails = () => {
           <OrderTracker activeStep={3} />
         </div>
         <Grid container spacing={2} className="space-y-5 mt-8">
-          {[1, 1, 1, 1, 1].map((item) => (
+          {[1].map((item) => (
             <Grid
               item
               xs={12} // Responsive grid sizes
