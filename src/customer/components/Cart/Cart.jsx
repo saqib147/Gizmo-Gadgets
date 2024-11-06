@@ -8,25 +8,19 @@ function Cart() {
   const handleCheckout = () => {
     navigate("/checkout?step=2");
   };
+
   return (
-    <div>
-      <div className="md:grid margin-x grid-cols-3 md:px-16 relative">
+    <div className="p-4 md:p-8">
+      <div className="md:grid grid-cols-3 gap-4">
         <div className="col-span-2">
-          <h1 className="text-2xl p-4 font-semibold">Your Tech Cart</h1>
-          <div className="hidden px-8 md:flex justify-around mb-4 font-semibold rounded-3xl p-4 bg-[#d9d9d9]">
-            <div className="border border-black rounded-full p-2 ">
-              Product Image
-            </div>
-            <div className="border border-black rounded-full p-2 ">Name</div>
-            <div className="border border-black rounded-full p-2 ">Color</div>
-            <div className="border border-black rounded-full p-2 ">Brand</div>
-            <div className="border border-black rounded-full p-2 ">Price</div>
-          </div>
-          {[1, 1, 1, 1].map((item) => (
-            <CartItem />
+          <h1 className="text-2xl md:text-3xl p-4 font-semibold">
+            Your Tech Cart
+          </h1>
+          {[1, 1, 1, 1].map((item, index) => (
+            <CartItem key={index} />
           ))}
         </div>
-        <div className="p-5 rounded-2xl sticky h-[50vh] ml-4 top-0 space-y-2 bg-[#d9d9d9] mt-5 md:mt-4">
+        <div className="p-5 rounded-2xl sticky h-[auto] md:h-fit ml-0 md:ml-4 top-0 space-y-2 bg-[#d9d9d9] mt-5 md:mt-0">
           <div className="p-4 rounded-2xl">
             <p className="uppercase text-xl font-bold opacity-60 pb-4">
               Shipping Charges

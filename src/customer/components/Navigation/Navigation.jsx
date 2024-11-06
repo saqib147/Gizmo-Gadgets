@@ -29,27 +29,20 @@ const Navbar = () => {
         {/* Logo */}
         <div className="text-white font-bold text-lg">Gadget Gizmo</div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-white p-1"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-
-        {/* Center Search Bar (Desktop) */}
-        <div className="hidden md:flex justify-center w-1/2">
-          <div className="relative w-full max-w-md">
-            <input
-              type="search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search Products..."
-              className="w-full p-1 rounded-full outline-none bg-white text-black placeholder-gray-500 pl-10"
-            />
-            <Search className="absolute left-3 top-2 text-gray-400" size={18} />
-          </div>
+        {/* Mobile Menu Button and Cart Icon */}
+        <div className="md:hidden flex items-center space-x-2">
+          <button
+            className="text-white p-1"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+          <Link to="/cart" aria-label="Shopping cart">
+            <button className="text-white">
+              <ShoppingBag size={20} />
+            </button>
+          </Link>
         </div>
 
         {/* Right Side Menu and Icons (Desktop) */}
@@ -89,7 +82,7 @@ const Navbar = () => {
                       Profile
                     </button>
                   </Link>
-                  <Link to="account/orders">
+                  <Link to="/account/orders">
                     <button className="block px-4 py-1 text-white hover:bg-gray-700 w-full text-left">
                       My Orders
                     </button>
@@ -106,7 +99,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-gray-800 rounded-lg shadow-lg">
@@ -141,15 +133,6 @@ const Navbar = () => {
               My Orders
             </Link>
           </div>
-
-          {/* Cart Icon */}
-          <Link
-            to="/cart"
-            className="flex items-center justify-between px-4 py-2 text-white hover:bg-gray-700 w-full text-left"
-          >
-            <ShoppingBag size={20} className="mr-2" />
-            Cart
-          </Link>
         </div>
       )}
     </div>
