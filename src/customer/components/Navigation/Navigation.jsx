@@ -107,11 +107,12 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-gray-800 rounded-lg shadow-lg">
           {menuItems.map((menuItem, index) => (
             <Link to={menuItem.path} key={index}>
-              <button
+              <div
                 className={`block px-4 py-2 text-white hover:bg-gray-700 w-full text-left ${
                   activeMenu === menuItem.label ? "bg-blue-500" : ""
                 }`}
@@ -121,9 +122,34 @@ const Navbar = () => {
                 }}
               >
                 {menuItem.label}
-              </button>
+              </div>
             </Link>
           ))}
+
+          {/* Profile Icon */}
+          <div className="flex items-center justify-between px-4 py-2 text-white hover:bg-gray-700 w-full text-left">
+            <Link to="/profile" className="flex items-center w-full">
+              <User size={20} className="mr-2" />
+              Profile
+            </Link>
+          </div>
+
+          {/* My Orders Link */}
+          <div className="flex items-center justify-between px-4 py-2 text-white hover:bg-gray-700 w-full text-left">
+            <Link to="/account/orders" className="flex items-center w-full">
+              <User size={20} className="mr-2" />
+              My Orders
+            </Link>
+          </div>
+
+          {/* Cart Icon */}
+          <Link
+            to="/cart"
+            className="flex items-center justify-between px-4 py-2 text-white hover:bg-gray-700 w-full text-left"
+          >
+            <ShoppingBag size={20} className="mr-2" />
+            Cart
+          </Link>
         </div>
       )}
     </div>
