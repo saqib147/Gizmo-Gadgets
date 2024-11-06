@@ -1,5 +1,5 @@
 import React from "react";
-import AddressCard from "../../AddressCard/AddressCard";
+import AddressCard from "../AddressCard/AddressCard";
 import { Box, Button, Grid, TextField } from "@mui/material";
 
 function DeliveryAddressForm() {
