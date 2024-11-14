@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+// in the navbar if the user is register or if auth.user = true. the signIn button should be replaced with the logout button
+import React, { useEffect, useState } from "react";
 import { Menu, X, Search, ShoppingBag, User } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import AuthModal from "../../Auth/AuthModal";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, logout } from "../../../State/Auth/Action";
 
 const menuItems = [
   { label: "Home", path: "/" },
@@ -14,6 +18,21 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState("Home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown
+  const [openAuthModal, setOpenAuthModal] = useState(false);
+  const jwt = localStorage.getItem("jwt");
+  const { auth } = useSelector((store) => store);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleOpen = () => {
+    setOpenAuthModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenAuthModal(false);
+    // navigate("/");
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -21,6 +40,29 @@ const Navbar = () => {
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  useEffect(() => {
+    if (jwt) {
+      console.log("User  registered:", auth.user);
+      dispatch(getUser(jwt));
+    }
+  }, [jwt, auth.jwt]);
+
+  useEffect(() => {
+    if (auth.user) {
+      handleClose();
+    }
+    if (location.pathname === "/login" || location.pathname === "/register") {
+      navigate(-1);
+    }
+  }, [auth.user]);
+
+  const handleLogOut = () => {
+    dispatch(logout());
+    toggleDropdown();
+    toggleMobileMenu();
+    localStorage.clear();
   };
 
   return (
@@ -77,11 +119,28 @@ const Navbar = () => {
               </button>
               {isDropdownOpen && (
                 <div className="absolute z-50 right-0 mt-1 w-48 bg-gray-800 rounded-lg shadow-lg">
+                  {auth.user ? (
+                    <button
+                      onClick={handleLogOut}
+                      className="block px-4 py-1 text-white hover:bg-gray-700 w-full text-left"
+                    >
+                      Logout
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleOpen}
+                      className="block px-4 py-1 text-white hover:bg-gray-700 w-full text-left"
+                    >
+                      SignIn
+                    </button>
+                  )}
+
                   <Link to="/profile">
                     <button className="block px-4 py-1 text-white hover:bg-gray-700 w-full text-left">
                       Profile
                     </button>
                   </Link>
+
                   <Link to="/account/orders">
                     <button className="block px-4 py-1 text-white hover:bg-gray-700 w-full text-left">
                       My Orders
@@ -125,6 +184,21 @@ const Navbar = () => {
               Profile
             </Link>
           </div>
+          {auth.user ? (
+            <button
+              onClick={handleLogOut}
+              className="block px-4 py-1 text-white hover:bg-gray-700 w-full text-left"
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={handleOpen}
+              className="block px-4 py-1 text-white hover:bg-gray-700 w-full text-left"
+            >
+              SignIn
+            </button>
+          )}
 
           {/* My Orders Link */}
           <div className="flex items-center justify-between px-4 py-2 text-white hover:bg-gray-700 w-full text-left">
@@ -135,6 +209,8 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div>
   );
 };

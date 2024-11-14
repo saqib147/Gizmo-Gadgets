@@ -9,6 +9,7 @@ import ProductDetails from "../customer/components/ProductDetails/ProductDetails
 import Checkout from "../customer/components/Checkout/Checkout.jsx";
 import OrderPage from "../customer/Pages/OrderPage/Order.jsx";
 import OrderDetails from "../customer/components/Order/OrderDetails.jsx";
+import Product from "../customer/components/Product/Product.jsx";
 // import other pages as needed...
 
 const CustomerRoutes = () => {
@@ -16,6 +17,9 @@ const CustomerRoutes = () => {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<HomePage />} />
+        <Route path="/register" element={<HomePage />} />
+        {/* <Route path="/:levelOne/:levelTwo/:levelThree" element={<Product />} /> */}
         <Route path="/shop" element={<ProductsPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
